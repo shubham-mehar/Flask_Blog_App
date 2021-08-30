@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- {% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %} -->
+<article>
+  {% for post in posts.items %}
+  <!-- <div class="card border-info mb-3"  style="max-width: 540px;">
+        <img class="rounded-circle article-image" style="max-width: 120px;"
+            src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}">
+
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author.username }}</a>
+                    <small class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <h5 class="card-title">
+                    <a class="article-title" href="#">{{ post.title }}</a>
+                </h5>
+                <div class="card-body">
+                    <p class="article-content">{{ post.content }}</p>
+                </div>
+
+            </div>
+        </article>
+    </div> -->
+  <div class="row justify-content-center">
+    <div class="card mb-3" style="max-width: auto;max-height:auto;">
+      <div class="row g-0">
+        <div class="col">
+          <img class="img-fluid rounded-circle  mt-3"
+            src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}">
+        </div>
+        <div class="col-10">
+          <div class="card-body">
+            <a class="mr-2" href="{{url_for('users.user_posts',username=post.author.username)}}">{{ post.author.username
+              }}</a>
+            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            <h5 class="card-title"> <a class="article-title" href="{{url_for('posts.post', post_id = post.id)}}">{{ post.title
+                }}</a></h5>
+            <p class="card-text">{{ post.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <article class="media content-section">
+        <div class="column"><img class="rounded-circle article-image" src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}"></div>
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.author.username }}</a>
+            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+          </div>
+          <h2><a class="article-title" href="{{url_for('posts.post', post_id = post.id)}}">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+        </div>
+      </article> -->
+
+  {% endfor %}
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+  {% if page_num %}
+  {% if posts.page==page_num %}
+  <a class="btn btn-info mb-4 mt-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+  {% else %}
+  <a class="btn btn-outline-info mb-4 mt-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+  {% endif %}
+  {% else %}
+  ...
+  {% endif %}
+  {% endfor %}
+  {% endblock %}

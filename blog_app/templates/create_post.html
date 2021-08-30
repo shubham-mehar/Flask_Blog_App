@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="row justify-content-center">
+        <div class="card text-centre align-self-center" style="width: 50%;">
+            <div class="col-lg">
+                <div class="login-header">
+                    <h3>{{legend}}</h3>
+                </div>
+            </div>
+            <div class="col-lg">
+                {{ form.title.label(class="form-control-label") }}
+                {% if form.title.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="col-lg">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+                {{ form.content(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <br>
+            <div class="col-lg">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <br>
+        </div>
+    </div>
+    <hr>
+</form>
+{% endblock %}

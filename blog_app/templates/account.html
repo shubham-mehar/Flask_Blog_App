@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- <div class="content-section">
+        <div class="media">
+                <img class="rounded-circle account-img" style="max-width: 120px;" src="{{ image_file }}">
+                <div class="media-body">
+                        <h2 class="account-heading">{{ current_user.username }}</h2>
+                        <p class="text-secondary">{{ current_user.email }}</p>
+                </div>
+        </div>
+</div> -->
+<div class="row justify-content-center">
+        <div class="card mb-3" style="max-width: 440px;height:auto;">
+                <div class="row g-0">
+                        <div class="col-md-4">
+                                <img src="{{ image_file }}" width="75%" height="75%"
+                                        class="img-fluid rounded-circle mb-3 mt-2 account-img" alt="account-img">
+                        </div>
+                        <div class="col-md-8">
+                                <div class="card-body">
+                                        <h5 class="card-title">{{ current_user.username }}</h5>
+                                        <p class="card-text text-secondary">{{ current_user.email }}</p>
+                                </div>
+                        </div>
+
+                </div>
+   
+
+
+</div>
+<div class="row justify-content-center"></div>
+<form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="row justify-content-center">
+        <div class="card text-centre align-self-center" style="width: 50%;">
+            <div class="col-lg">
+                <div class="login-header">
+                    <h3>Account info</h3>
+                </div>
+            </div>
+            <div class="col-lg">
+              {{ form.username.label(class="form-control-label") }}
+      
+              {% if form.username.errors %}
+                  {{ form.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="col-lg">
+              {{ form.email.label(class="form-control-label") }}
+      
+              {% if form.email.errors %}
+                  {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div> 
+            <br>   
+            <div class="col-lg">
+                {{ form.picture.label() }}
+                {{ form.picture(class="form-control form-control-lg") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>  
+          <br>
+            <div class="col-lg">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted">Need an account?  <a href="/login">Login now</a></small>
+        </div>
+        </div>
+        <hr>
+      </form>
+</div>
+
+ <!-- <div class="row justify-content-center">
+        
+        <div class="card text-centre align-self-center" style="width: 50%;">
+            <div class="col-lg">
+                <div class="login-header">
+                    <h3>Account info</h3>
+                </div>
+            </div>
+            <div class="col-lg">
+                {{ form.username.label(class="form-control-label") }}
+
+                {% if form.username.errors %}
+                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+        </div>
+            <div class="col-lg">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="col-lg">
+                {{ form.picture.label() }}
+                {{ form.picture(class="form-control form-control-lg") }}
+                {% if form.picture.errors %}
+                {% for error in form.picture.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}
+                {% endif %}
+        </div>
+        <br>
+        <div class="col-lg">
+                {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        <small class="text-muted">Need an account? <a href="/login">Login
+                        now</a></small>
+
+        </div>
+        </div>
+        <hr>
+</form> -->
+{% endblock %}
