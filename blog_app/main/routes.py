@@ -10,6 +10,19 @@ def home():
     posts=Post.query.order_by(Post.date_posted.desc()).paginate(page=page,per_page=5)
     return render_template('home.html',posts=posts)
 
+
+@main.route('/weather',methods=['GET','POST'])
+def weather():
+    return render_template('weather.html')   
+
+@main.route('/news',methods=['GET','POST'])
+def news():
+    return render_template('news.html') 
+
+@main.route('/calender')
+def calender():
+    return render_template('calender.html')
+
 @main.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html')      

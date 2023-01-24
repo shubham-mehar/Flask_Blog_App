@@ -24,10 +24,10 @@
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}"
-                    class="img-fluid rounded-start  mt-3"  width="50%" height="50%"  alt="...">
+                    class="img-fluid rounded-circle m-3 mt-3"  width="50%" height="50%"  alt="...">
             </div>
-            <div class="col-md-8">
-                <a class="mr-2" href="{{url_for('users.user_posts',username=post.author.username)}}">{{ post.author.username }}</a>
+            <div class="col-md-8 mt-2">
+                <a class="mr-2 " href="{{url_for('users.user_posts',username=post.author.username)}}">{{ post.author.username }}</a>
                 <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                 {% if post.author == current_user %}
                 <div>

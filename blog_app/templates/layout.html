@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
-
+    
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{{url_for('static',filename='apple-touch-icon.png')}}" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="{{url_for('static',filename='main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
     <title>Hello, world!</title>
 </head>
 
@@ -33,6 +34,9 @@
                         <a class="nav-link" href="/price">Pricing</a>
                     </li> -->
                 </ul>
+
+
+
                 <span class="navbar-text">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% if current_user.is_authenticated %}
@@ -40,6 +44,7 @@
                             <a class="nav-link active" aria-current="page" href="{{url_for('posts.new_post')}}">New Post</a>
                         </li>
                         <li class="nav-item">
+
                             <a class="nav-link active" aria-current="page" href="{{url_for('users.account')}}">Account</a>
                         </li>
                         <li class="nav-item">
@@ -78,15 +83,19 @@
             </div>
             <div class="col-md-4">
                 <div class="content-section">
-                    <h3>Our Sidebar</h3>
+
+                    <h3>Sidebar</h3>
                     <p class='text-muted'>You can put any information here you'd like.
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-light">
-                            <a href="#">Posts</a>
+                            <a href="{{url_for('main.weather')}}">weather</a>
                         </li>
-                        <li class="list-group-item list-group-item-light"><a href="#">Announcements</a></li>
-                        <li class="list-group-item list-group-item-light"><a href="#">Calendars</a></li>
-                        <li class="list-group-item list-group-item-light"><a href="#">etc</a></li>
+                        <li class="list-group-item list-group-item-light">
+                            <a href="{{url_for('main.news')}}">News</a>
+                        </li>
+                        <li class="list-group-item list-group-item-light">
+                            <a href="{{url_for('main.calender')}}">Calendars</a>
+                        </li>
                     </ul>
                     </p>
                 </div>
@@ -95,7 +104,7 @@
     </main>
 
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top footer">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                     
